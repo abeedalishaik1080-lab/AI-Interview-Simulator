@@ -4,3 +4,5 @@ pydantic
 sqlalchemy
 python-multipart
 pymupdf
+pytesseract
+Pillow

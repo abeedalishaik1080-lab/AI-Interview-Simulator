@@ -38,5 +38,18 @@
       "No interview questions or candidate answers were provided for evaluation."
     ],
     "feedback": "Unable to evaluate the candidate's performance as no interview questions were listed and no candidate answers were provided. To receive a comprehensive evaluation, please provide the complete set of questions asked during the interview and the candidate's corresponding responses. Once this information is available, a detailed assessment covering technical knowledge, problem-solving abilities, communication skills, and overall fit can be performed. Without any input, it is impossible to generate a meaningful score or specific feedback."
+  },
+  "36673dcda8ec31b772d140b0c55f35cb": {
+    "overall_score": 5,
+    "technical_score": 5,
+    "communication_score": 5,
+    "strengths": [],
+    "weaknesses": [
+      "Problem Comprehension",
+      "Communication Clarity",
+      "Ability to Elaborate",
+      "Python Project Experience (unproven)"
+    ],
+    "feedback": "The candidate's response to Question 1 was completely off-topic and extremely brief. The question asked for a description of a complex Python problem and the approach taken, but the candidate only listed 'Decorators, Generators.' This irrelevant and minimal answer made it impossible to assess their problem-solving skills, Python expertise, or ability to articulate technical solutions. There is no basis to evaluate any of the required competencies in Python, Machine Learning, or Database Management from this response. It suggests a significant misunderstanding of the question or a severe lack of relevant experience to draw upon."
   }
 }
