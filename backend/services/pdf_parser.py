@@ -8,9 +8,7 @@ content from an uploaded resume PDF.
 from pathlib import Path
 
 import fitz
-import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
 class PDFParserError(Exception):
@@ -31,24 +29,7 @@ class CorruptedPDFError(PDFParserError):
 
 class EncryptedPDFError(PDFParserError):
     """Raised when the PDF is password-protected or encrypted."""
-
-from pdf2image import convert_from_path
-from PIL import Image
-
-
-def extract_text_with_ocr(pdf_path: str) -> str:
-    images = convert_from_path(
-        pdf_path,
-        poppler_path=r"C:\Users\ASUS\Downloads\Release-26.02.0-0\poppler\Library\bin"
-    )
-
-    full_text = ""
-
-    for image in images:
-        text = pytesseract.image_to_string(image)
-        full_text += text + "\n"
-
-    return full_text.strip()
+    
 def extract_text(pdf_path: str | Path) -> str:
     """
     Open a PDF, read every page, and return all extracted text as one string.
@@ -107,12 +88,7 @@ def extract_text(pdf_path: str | Path) -> str:
         print("=" * 60)
 
         if not combined_text:
-            print("No text found with PyMuPDF. Trying OCR...")
-
-            combined_text = extract_text_with_ocr(str(path))
-
-            if not combined_text:
-                raise EmptyPDFError("The PDF contains no extractable text with PyMuPDF or OCR.")
+            raise EmptyPDFError("The PDF contains no extractable text.")
 
         return combined_text
     finally:
