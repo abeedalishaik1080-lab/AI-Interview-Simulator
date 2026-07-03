@@ -6,3 +6,5 @@ python-multipart
 pymupdf
 pytesseract
 Pillow
+google-generativeai
+python-dotenv
