@@ -25,15 +25,11 @@ genai.configure(api_key=api_key)
 model = genai.GenerativeModel("gemini-2.5-flash")
 
 def load_cache(file_path):
-    if file_path.exists():
-        with open(file_path, "r") as f:
-            return json.load(f)
     return {}
 
 
 def save_cache(file_path, data):
-    with open(file_path, "w") as f:
-        json.dump(data, f, indent=2)
+    return
 
 
 def generate_cache_key(data):
