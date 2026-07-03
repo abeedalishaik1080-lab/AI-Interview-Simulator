@@ -11,14 +11,12 @@ INTERVIEW_CACHE = CACHE_DIR / "interview_cache.json"
 
 RESUME_CACHE = CACHE_DIR / "resume_cache.json"
 
-dotenv_path = Path(__file__).resolve().parent.parent / ".env"
-print("Loading:", dotenv_path)
-
-load_dotenv(dotenv_path)
-
-print("API KEY FOUND:", os.getenv("GEMINI_API_KEY"))
+# Load environment variables (.env locally, Vercel automatically provides them)
+load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
+
+print("API KEY EXISTS:", api_key is not None)
 if not api_key:
     raise ValueError("GEMINI_API_KEY not found in .env file")
 
