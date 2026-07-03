@@ -36,5 +36,11 @@ async def upload_resume(file: UploadFile = File(...)):
     except (EmptyPDFError, CorruptedPDFError, EncryptedPDFError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:
-        print("FULL ERROR:", repr(exc))
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        import traceback
+        print("================ FULL ERROR ================")
+        traceback.print_exc()
+        print("=============================================")
+        raise HTTPException(
+            status_code=500,
+            detail=str(exc),
+        ) from exc

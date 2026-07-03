@@ -67,6 +67,10 @@ Resume:
 
     response = model.generate_content(prompt)
 
+    print("========== RAW GEMINI RESPONSE ==========")
+    print(response.text)
+    print("=========================================")
+
     text = response.text.strip()
 
     if text.startswith("```json"):
@@ -77,7 +81,13 @@ Resume:
 
     text = text.strip()
 
-    return json.loads(text)
+    try:
+        return json.loads(text)
+    except Exception:
+        print("========== FAILED TO PARSE JSON ==========")
+        print(text)
+        print("===================================================")
+        raise
 
 
 def generate_interview_questions(resume_data):
