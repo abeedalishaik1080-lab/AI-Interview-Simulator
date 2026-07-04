@@ -1,18 +1,12 @@
+import os
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-DATABASE_URL = "sqlite:///interview_history.db"
+DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:////tmp/interview_history.db")
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
+# Postgres needs no special connect_args; SQLite fallback (local dev) does
+connect_args = {} if DATABASE_URL.startswith("postgresql") else {"check_same_thread": False}
 
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine,
-)
-
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
