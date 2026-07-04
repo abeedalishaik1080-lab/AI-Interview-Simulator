@@ -3,7 +3,7 @@ from pathlib import Path
 
 from utils.file_validation import validate_pdf_file
 
-UPLOAD_DIR = Path(__file__).resolve().parent.parent / "uploads"
+UPLOAD_DIR = Path("/tmp/uploads") 
 
 
 def save_resume(file_content: bytes, original_filename: str, content_type: str | None) -> dict:
